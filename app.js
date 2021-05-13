@@ -3,12 +3,13 @@ const { request } = require('express');
 const path = require('path');
 const express = require('express');
 const app = express();
+app.use(express.json());
 const days = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday","Sunday"]
 
 app.set('views', path.join(__dirname,'views'));
 app.set('view engine','pug');
 
-app.use(express.json());
+
  app.use(express.urlencoded({
    extended:true
  }));
@@ -29,6 +30,7 @@ con.connect((err) => {
   }
   console.log('Connection established');
 });
+
 
 
 
@@ -63,13 +65,8 @@ app.post('/new',(req,res)=>{
                 return console.log(err.message);
               }
               console.log("New schedule has been added");
-              res.render('addSchedule',{
-                  username:userName,
-                  days:day,
-                  start_at:start,
-                  end_at:end,
-                  days
-              });
+              
+              res.redirect("/")
               
       
      });

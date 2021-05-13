@@ -15,9 +15,9 @@ block content
     tbody
       each schedule in schedules
         tr
-          td=schedule.ID
+          td=schedule.id_user
           td=schedule.username
-          td=days[schedule.day-1]
+          td=days[schedule.days-1]
           td=schedule.start
           td=schedule.end
         br
